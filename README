@@ -12,16 +12,12 @@
                        `--`----'   `--''               '---: |   | ,'   
                                                              `----'    
          
-                               ** VERSION 2.0.0 **
+                               ** VERSION 1.0.0 **
  
                           Santos, D. E. S.; Soares, T. A.
  
 
  CITATION: 
-
- Surface Assessment via Grid Evaluation (SuAVE) for Every Surface Curvature and Cavity 
- Shape. (2022) Denys E. S. Santos, Kaline Coutinho, Thereza A. Soares. J. Chem. Inf. Model.,
- v. 62, p. 4690–4701.
 
  SuAVE: A Tool for Analyzing Curvature-Dependent Properties in Chemical Interfaces
  (2020) Denys E. S. Santos, Frederico J. S. Pontes, Roberto D. Lins, Kaline Coutinho, 
@@ -82,11 +78,6 @@
  The use of flags -O2 or -O3 is well accepted by this compiler and the code. It will be 
  helpful for extracting the best performance of SuAVE. 
 
- SuAVE version 2.0.0 is also able to use OpenMP parallelization. To do so, the user has to 
- insert the following command line:
-
-       $ gfortran s_area.f90 -o s_area -fopenmp
-
  Once the user has compiled the source code or downloaded the compiled version of SuAVE Web
  Page, the code can be used. We suggest the following protocol to install the binaries and better
  take advantage of the SuAVE tools:
@@ -119,47 +110,57 @@
 
  USAGE:
 
- A classical use for most of SuAVE tools is exemplified below for s_densph:
+ A classical use for most of SuAVE tools is exemplified below for s_dens:
 
- Usage: s_densph -in file.pdb -ind1 file1.ndx -ind2 file2.ndx -dens dens.ndx
+ Usage: s_dens -in file.pdb -ind1 file1.ndx -ind2 file2.ndx -dens dens.ndx
  
  file.pdb ---- atomic coordinates in PDB format
-
- file.ndx ---- index file containing user-selected atoms used to fit the grid points to 
- the chemical surface.
-
- dens.ndx ---- index file containing user-selected atoms used to calculate density profile.
  
-
+ file.ndx ---- index file containing user-selected atoms used
+               to fit the grid points to the chemical surface.
+	       
+ dens.ndx ---- index file containing user-selected atoms used 
+               to calculate density profile.
+ 
  Options:
  
- -bin             defines the number of rectangular partition bins along the phi- and 
-                  psi-angles
+ -bin             defines the number of rectangular partition 
+                  bins along the x- and y-axes
  
- -grid            generates a PDB file containing the grid points used in the fitting 
-                  for the last frame in the trajectory file.
+ -outer           automatically selects the 
+                  surface/interface outmost atoms to fit the grid 
+		  points. This option overwrites the user-selected 
+		  index files.
  
- -rmsd            calculates the RMSD between the fitted grid and the selected atoms in the 
-                  index files. This estimates how precisely is the grid surface fitted to the
-                  chemical surface throughout the trajectory file.
+ -grid            generates a PDB file containing the grid
+ 	          points used in the fitting for the last frame in 
+		  the trajectory file.
  
- -coarse          generates a coarse grid over the surface index atoms from which a finer grid 
- 		  will be generated. This is recommended for surfaces defined by atoms which 
-		  greatly fluctuate throughout the trajectory. 
+ -rmsd            calculates the RMSD between the fitted
+                  grid and the selected atoms in the index files. 
+		  This estimates how precisely is the grid surface fitted 
+		  to the chemical surface throughout the trajectory file.
+ 
+ -coarse          generates a coarse grid over the surface
+                  index atoms from which a finer grid will be generated. 
+		  This recommended for surfaces defined by atoms which greatly
+		  fluctuate throughout the trajectory. 
  
  -begin           first frame to use in the calculations
  
  -end             last frame to use in the calculations
  
- -skip            number of trajectory frames to be skipped during the analysis 
+ -skip            number of trajectory frames to be skipped
+                  during the analysis 
  
- -slices          defines the number of slices along the axis normal to the system used 
- 		  to calculate the density profile
+ -water           used to calculate number of water
+                  molecules inside the structure
  
- -rough           percentage of the original surface roughness the user wants to keep 
- 		  (1.0 by default, meaning 100%)
+ -map             used to generate a 2D density map for a 
+                  specified group of atoms
  
- -help            prints HELP information and quits
+ -slices          defines the number of slices along the axis
+                  normal to the system used to calculate the density profile
 
 
  For more information as to the usage of each code, please use -help flag, or see the Tutorial on SuAVE
