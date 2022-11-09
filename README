@@ -33,9 +33,11 @@
  surfaces as fully differentiable. 
 
 
- This code has been writen by Denys E. S. Santos, Conceptualized by Thereza A. Soares 
- and Revised by Kaline Coutinho. 
-
+ Denys E. S. Santos wrote the code and conceived the algorithm and mathematical formalism. 
+ Thereza A. Soares conceived the idea and supervised code development. Kaline Coutinho and  
+ Roberto D. Lins revised the code and provided expertise with the equations and discussion.
+ Frederico J. S. Pontes developed the atomistic simulations used to validate the software. 
+ 
 
  INSTALLATION:
 
